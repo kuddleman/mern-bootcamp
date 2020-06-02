@@ -8,6 +8,12 @@ app.get('/login', ( request, response ) => {
   return response.send('you are visiting login route');
 })
 
+app.get('/signout', ( request, response ) => {
+   return response.send('You are signed out!')
+   })
+
+app.get('/hidesh', ( request, response ) => response.send('This is for Hidesh'))
+
 app.listen(port, () => {
   console.log("Server is up and running...")
 })
