@@ -8,6 +8,8 @@ app.get('/login', ( request, response ) => {
   return response.send('you are visiting login route');
 })
 
+app.get('/signup', ( request, response ) => response.send('This is the SIGNUP route'))
+
 app.get('/signout', ( request, response ) => {
    return response.send('You are signed out!')
    })
