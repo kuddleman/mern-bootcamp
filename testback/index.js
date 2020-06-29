@@ -4,6 +4,10 @@ const app = express();
 
 const port = 8000
 
+app.get('/', ( request, response ) => {
+  return response.send('This is the HOME PAGE')
+})
+
 app.get('/login', ( request, response ) => {
   return response.send('you are visiting login route');
 })
