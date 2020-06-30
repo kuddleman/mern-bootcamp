@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema({
     stype: String,
     trim: true
   },
+  password: {
+    type: String,
+    trim: true
+  },
   salt: String,
   role: {
     type: Number,
