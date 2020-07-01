@@ -26,9 +26,9 @@ const userSchema = new mongoose.Schema({
     stype: String,
     trim: true
   },
-  password: {
+  encry_password: {
     type: String,
-    trim: true
+    required: true
   },
   salt: String,
   role: {
@@ -40,5 +40,19 @@ const userSchema = new mongoose.Schema({
     default: []
   }
 })
+
+// create methods:
+
+userSchema.method = {
+  //get secure password: pass a plain password and return an encypted password
+  securePassword: function(plain) {
+    if ( !password ) return ""
+    try {
+
+    } catch (err) {
+        return ""
+    }
+  }
+}
 
 module.exports = mongoose.model('User', userSchema)
