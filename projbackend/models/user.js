@@ -1,4 +1,7 @@
 const mongoose = require('mongoose')
+const crypto = require('crypto')
+const { v1: uuidv1 } = require('uuid');
+
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -41,14 +44,23 @@ const userSchema = new mongoose.Schema({
   }
 })
 
-// create methods:
+userSchema.virtual("password")
+  .set(function(password){
+     this._password = password
+     this.salt = uuidv1
+     this.encry_password = this.securePassword(password)
+  })
+  .get()
 
+// create methods:
 userSchema.method = {
   //get secure password: pass a plain password and return an encypted password
-  securePassword: function(plain) {
+  securePassword: function(plainpassword) {
     if ( !password ) return ""
     try {
-
+        return crypto.createHmac('sha256', this.salt)
+        .update(plainpassword)
+        .digest('hex');
     } catch (err) {
         return ""
     }
