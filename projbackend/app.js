@@ -4,6 +4,10 @@ const mongoose = require('mongoose')
 const chalk = require('chalk')
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const cors = require('cors')
+
 
 
 mongoose.connect( process.env.DATABASE, { 
@@ -16,6 +20,7 @@ mongoose.connect( process.env.DATABASE, {
    console.log(chalk.red(`DB GOT OOOPS!`))
  )
 
+ app.use()
 
 const port = process.env.PORT || 8000
 
