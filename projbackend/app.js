@@ -20,7 +20,9 @@ mongoose.connect( process.env.DATABASE, {
    console.log(chalk.red(`DB GOT OOOPS!`))
  )
 
- app.use()
+ app.use(bodyParser.json())
+ app.use(cookieParser())
+ app.use(cors())
 
 const port = process.env.PORT || 8000
 
