@@ -57,13 +57,13 @@ userSchema.virtual("password")
   })
 
 // create methods:
-userSchema.method = {
+userSchema.methods = {
   authenticate: function(plainpassword){
     return this.securrePassword(plainpassword) === this.encry_password
   },
   //get secure password: pass a plain password and return an encypted password
   securePassword: function(plainpassword) {
-    if ( !password ) return ""
+    if ( !plainpassword ) return ""
     try {
         return crypto.createHmac('sha256', this.salt)
         .update(plainpassword)
