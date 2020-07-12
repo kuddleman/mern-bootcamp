@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const crypto = require('crypto')
-const { v1: uuidv1 } = require('uuid');
+//const { v1: uuidv1 } = require('uuid');
+const uuidv1 = require("uuid/v1")
 
 
 const userSchema = new mongoose.Schema({
@@ -19,15 +20,15 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: true,
-    unique: true
+   unique: true
   },
   password: {
     type: String,
-    trim: true
+   trim: true
   },
   userinfo: {
     stype: String,
-    trim: true
+   trim: true
   },
   encry_password: {
     type: String,
@@ -59,7 +60,7 @@ userSchema.virtual("password")
 // create methods:
 userSchema.methods = {
   authenticate: function(plainpassword){
-    return this.securrePassword(plainpassword) === this.encry_password
+    return this.securePassword(plainpassword) === this.encry_password
   },
   //get secure password: pass a plain password and return an encypted password
   securePassword: function(plainpassword) {
