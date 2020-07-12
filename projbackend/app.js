@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 
 
-
+// DB CONNECTION
 mongoose.connect( process.env.DATABASE, { 
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -20,12 +20,19 @@ mongoose.connect( process.env.DATABASE, {
    console.log(chalk.red(`DB GOT OOOPS!`))
  )
 
+
+// MIDDLEWARE
  app.use(bodyParser.json())
  app.use(cookieParser())
  app.use(cors())
 
+ //ROUTES
+
+
+ //PORT
 const port = process.env.PORT || 8000
 
+//STARTING A SERVER
 app.listen(port, () => {
   console.log(chalk.magentaBright(`App is running at ${ port }`))
 })
