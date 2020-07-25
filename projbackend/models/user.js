@@ -22,12 +22,8 @@ const userSchema = new mongoose.Schema({
     required: true,
    unique: true
   },
-  password: {
-    type: String,
-   trim: true
-  },
   userinfo: {
-    stype: String,
+    type: String,
    trim: true
   },
   encry_password: {
@@ -50,7 +46,7 @@ const userSchema = new mongoose.Schema({
 userSchema.virtual("password")
   .set(function(password){
      this._password = password
-     this.salt = uuidv1
+     this.salt = uuidv1()
      this.encry_password = this.securePassword(password)
   })
   .get(function(){
@@ -66,7 +62,8 @@ userSchema.methods = {
   securePassword: function(plainpassword) {
     if ( !plainpassword ) return ""
     try {
-        return crypto.createHmac('sha256', this.salt)
+        return crypto
+        .createHmac('sha256', this.salt)
         .update(plainpassword)
         .digest('hex');
     } catch (err) {
