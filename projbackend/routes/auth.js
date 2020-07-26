@@ -8,11 +8,11 @@ const { signout, signup } = require('../controllers/auth')
 
 router.post("/signup",[
   check( 'name' )
-  .isLength({ min: 3 }).withMessage('must be at least 3 characters long'),
+  .isLength({ min: 3 }).withMessage('name must be at least 3 letters long'),
   check( 'email' )
-  .isEmail(),
+  .isEmail().withMessage('email must be formatted correctly'),
   check( 'password' )
-  .isLength({ min: 5 }).withMessage('must be at least 5 characters long')
+  .isLength({ min: 5 }).withMessage('password must be at least 5 characters long')
 ], signup)
 
 router.get("/signout", signout ) 
