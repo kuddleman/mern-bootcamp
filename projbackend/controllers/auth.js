@@ -56,7 +56,7 @@ exports.signin = ( req, res ) => {
     const token = jwt.sign({ _id: user._id }, process.env.SECRET)
 
     // put token in cookie:
-    res.cookie( "token", token, { expire: new Date() + 9999 } )
+    res.cookie( 'token', token, { expire: new Date() + 9999 } )
 
     // send response to front end:
     const { _id, name, email, role } = user
@@ -68,7 +68,19 @@ exports.signin = ( req, res ) => {
 
 
 exports.signout = ( req, res ) => {
+  // clear the cookie:
+  res.clearCookie( 'token' )
+
   res.json({
-    message: "User signout",
+    message: 'User signout successfully',
   })
 }
+
+// protected routes
+exports.isSignedIn = expressJwt({
+  secret: process.env.SECRET,
+  userProperty: 'auth'
+})
+
+
+// custom middleware
