@@ -12,7 +12,22 @@ exports.getUserById = ( req, res, next, id ) => {
   })
 }
 
-// get back here for password
+
 exports.getUser = ( req, res ) => {
+  req.profile.salt = undefined
+  req.profile.encry_password = undefined
+  req.profile.createdAt = undefined
+  req.profile.updatedAt = undefined
   return res.json( req.profile )
 }
+
+// exports.getAllUsers = ( req, res ) => {
+//   User.find().exec( (err, users)  => {
+//     if ( err || !users ) {
+//       return res.status( 400 ).json({
+//         error: 'No users were found in database'
+//       })
+//     }
+//     res.json( users )
+//   })
+// }

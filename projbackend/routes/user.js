@@ -8,5 +8,7 @@ router.param('userId', getUserById)
 
 router.get('/user/:userId', isSignedIn, isAuthenticated, getUser)
 
+
+
 module.exports = router
 
