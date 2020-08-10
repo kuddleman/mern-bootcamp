@@ -12,7 +12,13 @@ router.param('userId', getUserById)
 router.param('productId', getProductById)
 
 //routes:
-router.post('/product/create/:userId', isSignedIn, isAuthenticated, isAdmin, createProduct )
+router.post(
+  '/product/create/:userId', 
+  isSignedIn, 
+  isAuthenticated, 
+  isAdmin, 
+  createProduct 
+)
 
 
 
