@@ -1,14 +1,19 @@
 const express = require('express')
 const router = express.Router()
 
-const { getProductById } = require('../controllers/product')
+const { getProductById, createProduct } = require('../controllers/product')
 const { isSignedIn, isAuthenticated, isAdmin } = require('../controllers/auth')
 const { getUserById } = require('../controllers/user')
 
-module.exports = router
+
 
 //params:
 router.param('userId', getUserById)
 router.param('productId', getProductById)
 
 //routes:
+router.post('/product/create/:userId', isSignedIn, isAuthenticated, isAdmin, createProduct )
+
+
+
+module.exports = router
